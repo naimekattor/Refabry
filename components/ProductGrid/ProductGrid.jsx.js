@@ -84,7 +84,7 @@ const ProductGrid = ({ products, loading, error }) => {
       {sortedProducts.length === 0 ? (
         <div className="py-12 text-center">
           <p className="text-lg text-gray-600">
-            No products found matching "{searchTerm}"
+            No products found matching &quot;{searchTerm}&quot;
           </p>
           <button
             onClick={() => setSearchTerm("")}

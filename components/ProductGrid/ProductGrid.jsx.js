@@ -5,7 +5,7 @@ import ErrorMessage from "../../ui/ErrorMessage";
 import Loader from "../../ui/Loader";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ProductGrid = ({ products, loading, error }) => {
+const ProductGrid = ({ products = [], loading, error }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
 

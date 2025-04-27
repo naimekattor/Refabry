@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,7 +11,7 @@ export const useProducts = () => {
         );
         const data = await response.json();
 
-        if (data) {
+        if (data && data.data && data.data.data) {
           setProducts(data.data.data);
         } else {
           setError(data.message || "Failed to fetch products");

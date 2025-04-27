@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"; // Use useRouter from next/navigati
 import Button from "./../ui/Button";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-
+export const dynamic = "force-dynamic";
 const CartPage = () => {
   const { items } = useSelector((state) => state.cart);
   console.log(items);

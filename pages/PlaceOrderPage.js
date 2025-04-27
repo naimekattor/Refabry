@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"; // Use useRouter from next/navigati
 import Button from "./../ui/Button";
 import ErrorMessage from "./../ui/ErrorMessage";
 import { useSelector } from "react-redux";
-
+export const dynamic = "force-dynamic";
 const PlaceOrderPage = () => {
   const router = useRouter();
   const { items, total } = useSelector((state) => state.cart);

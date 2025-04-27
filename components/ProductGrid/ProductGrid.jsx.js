@@ -5,7 +5,7 @@ import ErrorMessage from "../../ui/ErrorMessage";
 import Loader from "../../ui/Loader";
 import ProductCard from "../ProductCard/ProductCard";
 
-const ProductGrid = ({ products = [], loading, error }) => {
+const ProductGrid = ({ products, loading, error }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("");
 
@@ -14,7 +14,7 @@ const ProductGrid = ({ products = [], loading, error }) => {
     (product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (product.category || "").toLowerCase().includes(searchTerm.toLowerCase()) // added check for null/undefined
+      (product.category || "").toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   // Sort products based on selected option

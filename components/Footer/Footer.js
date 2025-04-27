@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { ShoppingBag, Instagram, Twitter, Facebook, Mail } from "lucide-react";

@@ -1,10 +1,11 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // Use useRouter from next/navigation
 import Button from "./../ui/Button";
 import ErrorMessage from "./../ui/ErrorMessage";
 import { useSelector } from "react-redux";
-export const dynamic = "force-dynamic";
 const PlaceOrderPage = () => {
   const router = useRouter();
   const { items, total } = useSelector((state) => state.cart);

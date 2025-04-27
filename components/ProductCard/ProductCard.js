@@ -10,6 +10,7 @@ const ProductCard = ({ product }) => {
     product.discount_amount &&
     typeof product.discount_amount === "number" &&
     product.discount_amount < product.price;
+  console.log(`https://admin.refabry.com/storage/product/${product.image}`);
 
   return (
     <div className="group relative bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
@@ -23,6 +24,7 @@ const ProductCard = ({ product }) => {
               alt={product.name}
               className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
+              unoptimized
             />
           </div>
         </Link>

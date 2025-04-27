@@ -1,6 +1,8 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation"; // Use useParams from next/navigation
+import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Star, ShoppingCart, Heart, Share2 } from "lucide-react";
 import Loader from "../ui/Loader";
 import ErrorMessage from "../ui/ErrorMessage";
@@ -12,21 +14,22 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/store/slices/cartSlice";
 
 const ProductDetail = () => {
-  const { id } = useParams();
+  const params = useParams();
+  const id = params?.id;
   const [productDetail, setProductDetail] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { products } = useProducts();
-
-  // console.log("Product ID:", id);
-  // console.log("Products:", products);
-
+  const router = useRouter();
   const dispatch = useDispatch();
-  const handfleAddToCart = () => {
+  console.log(id);
+
+  const handleAddToCart = () => {
     if (quantity > 0 && productDetail) {
       dispatch(addToCart({ product: productDetail, quantity }));
     }
+    router.push("/cart");
   };
 
   useEffect(() => {
@@ -94,6 +97,7 @@ const ProductDetail = () => {
                 src={`https://admin.refabry.com/storage/product/${productDetail.image}`}
                 alt={productDetail.name}
                 className="w-full h-full object-contain object-center"
+                unoptimized
               />
             </div>
           </div>
@@ -157,11 +161,10 @@ const ProductDetail = () => {
                 variant="primary"
                 isFullWidth
                 className="flex items-center justify-center"
+                onClick={handleAddToCart}
               >
                 <ShoppingCart className="mr-2 h-5 w-5" />
-                <Link href={`/cart`} onClick={handfleAddToCart}>
-                  Add to Cart
-                </Link>
+                Add to Cart
               </Button>
 
               <Button

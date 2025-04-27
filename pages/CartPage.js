@@ -1,17 +1,17 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import { Trash2, ShoppingBag } from "lucide-react";
-import { useRouter } from "next/navigation"; // Use useRouter from next/navigation
+import { useRouter } from "next/navigation";
 import Button from "./../ui/Button";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-export const dynamic = "force-dynamic";
 const CartPage = () => {
   const { items } = useSelector((state) => state.cart);
   console.log(items);
 
-  // const dispatch = useAppDispatch();
-  const router = useRouter(); // Use useRouter instead of useNavigate
+  const router = useRouter();
 
   const handleUpdateQuantity = (productId, quantity) => {
     if (quantity < 1) return;
@@ -36,7 +36,7 @@ const CartPage = () => {
           <Button
             variant="primary"
             className="mt-6"
-            onClick={() => router.push("/")} // Use router.push for navigation
+            onClick={() => router.push("/")}
           >
             Continue Shopping
           </Button>
@@ -111,7 +111,10 @@ const CartPage = () => {
               <div className="flex justify-between">
                 <span>Subtotal</span>
                 <span>
-                  {items.reduce((total, sum) => total + sum.price, 0)}
+                  {items.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -122,7 +125,7 @@ const CartPage = () => {
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
                   <span>
-                    {items.reduce((total, sum) => total + sum.price + 80, 0)}
+                    {items.reduce((total, item) => total + item.price + 80, 0)}
                   </span>
                 </div>
               </div>

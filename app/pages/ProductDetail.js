@@ -94,8 +94,8 @@ const ProductDetail = () => {
               <Image
                 width={400}
                 height={400}
-                src={`https://admin.refabry.com/storage/product/${productDetail.image}`}
-                alt={productDetail.name}
+                src={productDetail.image}
+                alt={productDetail.title}
                 className="w-full h-full object-contain object-center"
                 unoptimized
               />
@@ -104,7 +104,7 @@ const ProductDetail = () => {
 
           <div className="flex flex-col">
             <h1 className="text-3xl font-bold text-gray-900">
-              {productDetail.name}
+              {productDetail.title}
             </h1>
 
             <div className="mt-4">
@@ -116,14 +116,14 @@ const ProductDetail = () => {
             <div className="mt-6">
               <h3 className="text-sm font-medium text-gray-900">Description</h3>
               <p className="mt-2 text-base text-gray-700">
-                {productDetail.short_desc}
+                {productDetail.description}
               </p>
             </div>
 
             <div className="mt-6">
               <h3 className="text-sm font-medium text-gray-900">Category</h3>
               <p className="mt-1 text-sm text-gray-500 capitalize">
-                {productDetail.category.name}
+                {productDetail.category}
               </p>
             </div>
 

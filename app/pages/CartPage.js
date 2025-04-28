@@ -60,13 +60,13 @@ const CartPage = () => {
                 <Image
                   width={80}
                   height={80}
-                  src={`https://admin.refabry.com/storage/product/${item.image}`}
-                  alt={item.name}
+                  src={item.image}
+                  alt={item.title}
                   className="w-20 h-20 object-contain"
                 />
                 <div className="ml-4 flex-grow">
                   <h3 className="text-lg font-medium text-gray-900">
-                    {item.name}
+                    {item.title}
                   </h3>
                   <p className="text-gray-600">${item.price}</p>
                 </div>

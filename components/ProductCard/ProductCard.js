@@ -10,7 +10,6 @@ const ProductCard = ({ product }) => {
     product.discount_amount &&
     typeof product.discount_amount === "number" &&
     product.discount_amount < product.price;
-  console.log(`https://admin.refabry.com/storage/product/${product.image}`);
 
   return (
     <div className="group relative bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
@@ -20,8 +19,8 @@ const ProductCard = ({ product }) => {
             <Image
               width={400}
               height={400}
-              src={`https://admin.refabry.com/storage/product/${product.image}`}
-              alt={product.name}
+              src={product.image}
+              alt={product.title}
               className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               unoptimized
@@ -42,11 +41,11 @@ const ProductCard = ({ product }) => {
       <div className="p-4">
         <Link href={`/product/${product.slug}`}>
           <h3 className="text-lg font-medium text-gray-900 hover:text-indigo-600 transition-colors line-clamp-2 h-14">
-            {product.name}
+            {product.title}
           </h3>
         </Link>
         <p className="mt-1 text-sm text-gray-500 line-clamp-2 h-10">
-          {product.short_desc}
+          {product.description}
         </p>
         <div className="mt-2 flex items-center justify-between">
           <div>

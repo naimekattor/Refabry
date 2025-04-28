@@ -1,7 +1,7 @@
 import React from "react";
 import { ShoppingBag } from "lucide-react";
-import ProductGrid from "./../components/ProductGrid/ProductGrid.jsx";
-import { useProducts } from "./../hooks/useProducts";
+import ProductGrid from "../../components/ProductGrid/ProductGrid.jsx.js";
+import { useProducts } from "./../../hooks/useProducts.js";
 
 const HomePage = () => {
   const { products, loading, error } = useProducts();

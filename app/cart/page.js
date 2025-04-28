@@ -1,4 +1,4 @@
-import CartPage from "@/pages/CartPage";
+import CartPage from "@/app/pages/CartPage";
 import React from "react";
 
 const Page = () => {

@@ -1,4 +1,4 @@
-import PlaceOrderPage from "@/pages/PlaceOrderPage";
+import PlaceOrderPage from "@/app/pages/PlaceOrderPage";
 import React from "react";
 
 const Page = () => {

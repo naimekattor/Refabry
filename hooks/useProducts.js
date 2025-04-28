@@ -8,13 +8,11 @@ export const useProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          "https://admin.refabry.com/api/all/product/get"
-        );
+        const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
 
-        if (data && data.data && data.data.data) {
-          setProducts(data.data.data);
+        if (data) {
+          setProducts(data);
         } else {
           setError(data.message || "Failed to fetch products");
         }

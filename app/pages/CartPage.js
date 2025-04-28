@@ -4,7 +4,7 @@ export const dynamic = "force-dynamic";
 import React from "react";
 import { Trash2, ShoppingBag } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Button from "./../ui/Button";
+import Button from "../../ui/Button";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 const CartPage = () => {

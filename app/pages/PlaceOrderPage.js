@@ -3,8 +3,8 @@ export const dynamic = "force-dynamic";
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation"; // Use useRouter from next/navigation
-import Button from "./../ui/Button";
-import ErrorMessage from "./../ui/ErrorMessage";
+import Button from "../../ui/Button";
+import ErrorMessage from "../../ui/ErrorMessage";
 import { useSelector } from "react-redux";
 const PlaceOrderPage = () => {
   const router = useRouter();

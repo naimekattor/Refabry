@@ -1,6 +1,18 @@
 # Refabry
 
-A modern and responsive web application built with **Next.js** and **Tailwind CSS**.
+A modern and responsive e-commerce web application built with **Next.js** and **Tailwind CSS**.
+
+---
+
+## 🌟 About Refabry
+
+This is an e-commerce website named **Refabry**, where you can:
+
+- Search for products.
+- Filter products by price (low to high).
+- Manage your cart on a dedicated cart page.
+- View dynamic product details on individual product pages.
+- Place orders on the place order page, with global state management powered by **Redux**.
 
 ---
 
@@ -23,6 +35,7 @@ Explore the full source code here:
 - Next.js
 - React.js
 - Tailwind CSS
+- Redux (Global State Management)
 - JavaScript (ES6+)
 
 ---
@@ -63,6 +76,25 @@ Follow these steps to run the project locally:
 ## 📸 Screenshots
 
 Add screenshots of your project UI here to make it even more attractive!
+
+---
+
+## 🤝 Contribution
+
+This is an open-source project, and contributions are welcome! If you'd like to contribute:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push them to your fork.
+4. Open a pull request to the main repository.
+
+---
+
+## 🚀 Future Opportunities
+
+We are looking for contributors to help create a backend for this project. If you're interested, feel free to reach out!
+
+📧 Contact: **naimekattor@gmail.com**
 
 ---
 

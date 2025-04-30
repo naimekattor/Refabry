@@ -4,12 +4,16 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Menu, X, ShoppingBag, Search } from "lucide-react";
 import { useSelector } from "react-redux";
+import { useProducts } from "@/hooks/useProducts";
+import Image from "next/image";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [filterProducts, setFilterProducts] = useState([]);
   const router = useRouter();
   const { items } = useSelector((state) => state.cart);
+  const { products } = useProducts();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -27,13 +31,35 @@ const Header = () => {
     setIsMenuOpen(false);
   }, [router.pathname]);
 
+  // handle input change
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const updatedProducts = products.filter(
+      (product) =>
+        product.title.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
+    );
+    setFilterProducts(updatedProducts);
+
+    const headerInputs = document.querySelectorAll(".headerInput");
+    if (searchTerm === "") {
+      setFilterProducts([]);
+      headerInputs.forEach((input) => {
+        input.style.display = "none";
+      });
+    } else {
+      headerInputs.forEach((input) => {
+        input.style.display = "block";
+      });
+    }
+  };
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "bg-white shadow-md" : "bg-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link href="/" className="flex items-center">
             <ShoppingBag className="h-8 w-auto text-indigo-600 mr-2" />
@@ -60,7 +86,39 @@ const Header = () => {
                 type="text"
                 placeholder="Search products..."
                 className="pl-10 pr-4 py-2 w-64 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                onChange={(e) => handleInputChange(e)}
               />
+              <div className="headerInput hidden absolute top-12 left-0 w-full bg-white shadow-lg rounded-lg p-4 z-10 overflow-y-scroll  max-h-160">
+                {filterProducts.length > 0 ? (
+                  filterProducts.map((product, id) => (
+                    <div
+                      key={id}
+                      className="flex items-center gap-2 p-2 hover:bg-gray-300 rounded-lg cursor-pointer "
+                      onClick={() => {
+                        router.push(`/products/${product.id}`);
+                        setFilterProducts([]);
+                        document.getElementById("headerInput").style.display =
+                          "none";
+                      }}
+                    >
+                      <div>
+                        <Image
+                          src={product.image}
+                          alt={product.title}
+                          width={40}
+                          height={30}
+                        />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <h1>{product.title.slice(0, 15)}...</h1>
+                        <span>{product.price}</span>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <div>No Products Found</div>
+                )}
+              </div>
             </div>
             <div
               className="relative py-2 cursor-pointer"
@@ -153,7 +211,39 @@ const Header = () => {
                   type="text"
                   placeholder="Search products..."
                   className="pl-10 pr-4 py-2 w-full rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                  onChange={(e) => handleInputChange(e)}
                 />
+                <div className=" headerInput hidden absolute top-22 left-0 w-full bg-white shadow-lg rounded-lg p-4 z-10 overflow-y-scroll  max-h-160">
+                  {filterProducts.length > 0 ? (
+                    filterProducts.map((product, id) => (
+                      <div
+                        key={id}
+                        className="flex items-center gap-2 p-2 hover:bg-gray-300 rounded-lg cursor-pointer "
+                        onClick={() => {
+                          router.push(`/products/${product.id}`);
+                          setFilterProducts([]);
+                          document.getElementById("headerInput").style.display =
+                            "none";
+                        }}
+                      >
+                        <div>
+                          <Image
+                            src={product.image}
+                            alt={product.title}
+                            width={40}
+                            height={30}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-2">
+                          <h1>{product.title.slice(0, 15)}...</h1>
+                          <span>{product.price}</span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div>No Products Found</div>
+                  )}
+                </div>
               </div>
             </div>
           </div>

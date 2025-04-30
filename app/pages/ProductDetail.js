@@ -29,7 +29,6 @@ const ProductDetail = () => {
     if (quantity > 0 && productDetail) {
       dispatch(addToCart({ product: productDetail, quantity }));
     }
-    router.push("/cart");
   };
 
   useEffect(() => {
@@ -160,7 +159,7 @@ const ProductDetail = () => {
               <Button
                 variant="primary"
                 isFullWidth
-                className="flex items-center justify-center"
+                className="flex items-center justify-center cursor-pointer"
                 onClick={handleAddToCart}
               >
                 <ShoppingCart className="mr-2 h-5 w-5" />

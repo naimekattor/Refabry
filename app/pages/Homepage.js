@@ -2,7 +2,7 @@ import React from "react";
 import { ShoppingBag } from "lucide-react";
 import ProductGrid from "../../components/ProductGrid/ProductGrid.jsx.js";
 import { useProducts } from "./../../hooks/useProducts.js";
-
+import HeroSlider from "@/components/HeroSlider/HeroSlider.js";
 const HomePage = () => {
   const { products, loading, error } = useProducts();
   console.log(products, loading, error);
@@ -10,10 +10,10 @@ const HomePage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-indigo-600 to-indigo-900 text-white">
-        <div className="container mx-auto px-4 py-16 md:py-24">
+      <section className="relative bg-gradient-to-r from-indigo-600 to-indigo-900 text-white h-screen">
+        <div className="container flex items-center justify-center w-full h-screen mx-auto px-4 py-26 md:py-26">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="max-w-xl mb-8 md:mb-0">
+            <div className="max-w-1/3 mb-8 md:mb-0">
               <h1 className="text-3xl md:text-5xl font-bold mb-4">
                 Discover Amazing Products
               </h1>
@@ -36,10 +36,11 @@ const HomePage = () => {
                 </a>
               </div>
             </div>
-            <div className="hidden md:block">
-              <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-8 rounded-xl">
+            <div className="hidden md:block overflow-hidden max-w-4xl h-[500px]">
+              {/* <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg p-8 rounded-xl">
                 <ShoppingBag className="h-36 w-36 text-white" />
-              </div>
+              </div> */}
+              <HeroSlider />
             </div>
           </div>
         </div>

@@ -66,12 +66,13 @@ const ProductCard = ({ product }) => {
           </div>
           <div className="text-sm text-gray-500">SKU: {product.code}</div>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 cursor-pointer">
           <Link href={`/products/${product.id}`}>
             <Button
               variant="primary"
               isFullWidth
               disabled={product.status === "out_of_stock"}
+              className="cursor-pointer"
             >
               View Details
             </Button>

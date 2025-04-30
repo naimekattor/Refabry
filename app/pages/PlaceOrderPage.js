@@ -69,7 +69,7 @@ const PlaceOrderPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-20">
+    <div className="container mx-auto px-4 py-22">
       <div className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Place Order</h1>
 
@@ -90,7 +90,7 @@ const PlaceOrderPage = () => {
               required
               value={formData.c_name}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full h-12 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
 
@@ -108,7 +108,7 @@ const PlaceOrderPage = () => {
               required
               value={formData.c_phone}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full h-12 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
 
@@ -126,7 +126,7 @@ const PlaceOrderPage = () => {
               required
               value={formData.address}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full h-12 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             />
           </div>
 
@@ -142,7 +142,7 @@ const PlaceOrderPage = () => {
               name="courier"
               value={formData.courier}
               onChange={handleInputChange}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full h-12 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
             >
               <option value="steadfast">Steadfast</option>
             </select>
@@ -157,7 +157,7 @@ const PlaceOrderPage = () => {
                 <span>Subtotal</span>
                 <span>
                   {items
-                    .reduce((total, sum) => total + sum.price, 0)
+                    .reduce((total, item) => total + item.totalAmount, 0)
                     .toFixed(2)}
                 </span>
               </div>
@@ -170,9 +170,12 @@ const PlaceOrderPage = () => {
                   <span>Total</span>
                   <span>
                     $
-                    {items
-                      .reduce((total, sum) => total + sum.price + 80, 0)
-                      .toFixed(2)}
+                    {(
+                      items.reduce(
+                        (total, item) => total + item.totalAmount,
+                        0
+                      ) + 80
+                    ).toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -184,6 +187,7 @@ const PlaceOrderPage = () => {
             variant="primary"
             isFullWidth
             disabled={loading}
+            className="cursor-pointer"
           >
             {loading ? "Placing Order..." : "Place Order"}
           </Button>

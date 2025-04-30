@@ -1,15 +1,15 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import React from "react";
 import { Trash2, ShoppingBag } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Button from "../../ui/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 const CartPage = () => {
   const { items } = useSelector((state) => state.cart);
   console.log(items);
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -35,7 +35,7 @@ const CartPage = () => {
           </p>
           <Button
             variant="primary"
-            className="mt-6"
+            className="mt-6 cursor-pointer"
             onClick={() => router.push("/")}
           >
             Continue Shopping
@@ -46,12 +46,14 @@ const CartPage = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
+    <div className="container mx-auto px-4 py-20">
+      <h1 className="text-3xl font-bold text-gray-900 mb-8 cursor-pointer">
+        Shopping Cart
+      </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          {items.map((item) => (
+          {items.map((item, id) => (
             <div
               key={item.id}
               className="bg-white rounded-lg shadow-md p-6 mb-4"
@@ -80,7 +82,7 @@ const CartPage = () => {
                     >
                       -
                     </button>
-                    <span className="px-4 py-1">{item.quantity}</span>
+                    <span className="px-4 py-1">{item.totalQuantity}</span>
                     <button
                       onClick={() =>
                         handleUpdateQuantity(item.id, item.quantity + 1)
@@ -111,10 +113,7 @@ const CartPage = () => {
               <div className="flex justify-between">
                 <span>Subtotal</span>
                 <span>
-                  {items.reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )}
+                  {items.reduce((total, item) => total + item.totalAmount, 0)}
                 </span>
               </div>
               <div className="flex justify-between">
@@ -125,7 +124,12 @@ const CartPage = () => {
                 <div className="flex justify-between font-semibold">
                   <span>Total</span>
                   <span>
-                    {items.reduce((total, item) => total + item.price + 80, 0)}
+                    {(
+                      items.reduce(
+                        (total, item) => total + item.totalAmount,
+                        0
+                      ) + 80
+                    ).toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -133,7 +137,7 @@ const CartPage = () => {
             <Button
               variant="primary"
               isFullWidth
-              className="mt-6"
+              className="mt-6 cursor-pointer"
               onClick={() => router.push("/order")}
             >
               Proceed to Checkout

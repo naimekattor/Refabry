@@ -9,7 +9,7 @@ const Products = () => {
   const { products, loading, error } = useProducts();
 
   return (
-    <div>
+    <div className="container mx-auto px-4 py-20">
       <ProductGrid products={products} loading={loading} error={error} />
     </div>
   );

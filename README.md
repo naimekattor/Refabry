@@ -2,7 +2,9 @@
 
 A modern and responsive e-commerce web application built with **Next.js** and **Tailwind CSS**.
 
----
+## 📸 Screenshots
+<img src='./Refabry.png'/>
+Add screenshots of your project UI here to make it even more attractive!
 
 ## 🌟 About Refabry
 
@@ -73,9 +75,7 @@ Follow these steps to run the project locally:
 
 ---
 
-## 📸 Screenshots
 
-Add screenshots of your project UI here to make it even more attractive!
 
 ---
 
